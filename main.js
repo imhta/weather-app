@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("alert(\"welcome\");\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("async function fetchWeather(city) {\r\n  const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=0afb0e9dce5d994d7f33ebdcc4202375`);\r\n  const data = await res.json();\r\n  const {\r\n    weather, wind, main, name,\r\n  } = data;\r\n  return {\r\n    weather, wind, main, name,\r\n  };\r\n}\r\n\r\n\r\ndocument.addEventListener('keyup', ({ target }) => {\r\n  // eslint-disable-next-line no-console\r\n  console.log(fetchWeather(target.value));\r\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
