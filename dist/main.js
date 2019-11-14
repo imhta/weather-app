@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("async function fetchWeather(city) {\r\n  const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=0afb0e9dce5d994d7f33ebdcc4202375`);\r\n  const data = await res.json();\r\n  const {\r\n    weather, wind, main, name,\r\n  } = data;\r\n  return {\r\n    weather, wind, main, name,\r\n  };\r\n}\r\n\r\n\r\ndocument.addEventListener('keyup', ({ target }) => {\r\n  // eslint-disable-next-line no-console\r\n  console.log(fetchWeather(target.value));\r\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const debounce = (func, delay) => {\r\n  let inDebounce;\r\n  // eslint-disable-next-line func-names\r\n  return function () {\r\n    const context = this;\r\n    // eslint-disable-next-line prefer-rest-params\r\n    const args = arguments;\r\n    clearTimeout(inDebounce);\r\n    inDebounce = setTimeout(() => func.apply(context, args), delay);\r\n  };\r\n};\r\n\r\n// eslint-disable-next-line no-unused-vars\r\nconst fetchWeather = async (city) => {\r\n  const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=0afb0e9dce5d994d7f33ebdcc4202375`);\r\n  const data = await res.json();\r\n  const {\r\n    weather, wind, main, name,\r\n  } = data;\r\n  return {\r\n    weather, wind, main, name,\r\n  };\r\n};\r\n\r\n\r\ndocument.getElementById('city-input').addEventListener('keyup', debounce(({ target }) => {\r\n  // eslint-disable-next-line no-console\r\n  console.log(fetchWeather(target.value));\r\n}, 300));\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
