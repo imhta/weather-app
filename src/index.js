@@ -10,20 +10,24 @@ const debounce = (func, delay) => {
   };
 };
 
-// eslint-disable-next-line no-unused-vars
+
 const fetchWeather = async (city) => {
-  const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=0afb0e9dce5d994d7f33ebdcc4202375`);
-  const data = await res.json();
   const {
-    weather, wind, main, name,
-  } = data;
+    weather, wind, main, name, cod, message,
+  } = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=0afb0e9dce5d994d7f33ebdcc4202375`)
+    .then((res) => res.json()
+      .then((data) => data)
+      .catch((error) => error))
+    .catch((error) => error);
   return {
-    weather, wind, main, name,
+    weather, wind, main, name, error: { cod, message },
   };
 };
 
 
 document.getElementById('city-input').addEventListener('keyup', debounce(({ target }) => {
   // eslint-disable-next-line no-console
-  console.log(fetchWeather(target.value));
+  fetchWeather(target.value).then((data) => {
+    document.getElementById('weather').innerText = JSON.stringify(data);
+  });
 }, 300));
