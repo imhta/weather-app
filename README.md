@@ -24,7 +24,7 @@ npm start
 
 ## Author
 
-👤 **Imhta**
+**Imhta**
 
 - Twitter: [@Pon Muthu Selvam](https://twitter.com/ponmuthuselvam)
 - Github: [@imhta](https://github.com/imhta)
