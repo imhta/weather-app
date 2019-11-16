@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nconst renderEmpty = () => { d
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst weatherElement = document.getElementById('weather');\r\n\r\nconst renderLoading = () => {\r\n  weatherElement.innerHTML = '<h1>loading...</h1>';\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (renderLoading);\n\n//# sourceURL=webpack:///./src/components/loading.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst weatherElement = document.getElementById('weather');\r\n\r\nconst renderLoading = () => {\r\n  weatherElement.innerHTML = '<div class=\"loading\">loading...</div>';\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (renderLoading);\n\n//# sourceURL=webpack:///./src/components/loading.js?");
 
 /***/ }),
 
