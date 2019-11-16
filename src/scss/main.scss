@@ -1,12 +1,49 @@
-input {
-  padding: 10px 20px;
-  font-size: 24px;
-  border: none;
-  background-color: gray;
-  color: white;
-  border-radius: 4px;
-  
-  &::placeholder {
-      color: rgb(168, 168, 168);
+body {
+  margin: 0px;
+  font-family: "Courier New", Courier, monospace;
+  main {
+    display: flex;
+    flex-wrap: wrap;
+
+    input {
+      flex-grow: 1;
+      padding: 20px 30px;
+      margin: 10px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 24px;
+      border: none;
+      background-color: gray;
+      color: white;
+      border-radius: 4px;
+
+      &::placeholder {
+        color: rgb(168, 168, 168);
+      }
+    }
+    .title {
+      font-size: 30px;
+      text-align: center;
+    }
+    .note {
+      text-align: center;
+    }
+    #content {
+      flex-grow: 1;
+      height: 100vh;
+      background-color: rgb(54, 0, 105);
+
+      #weather {
+        text-align: center;
+        padding: 40px;
+        color: white;
+        .title {
+          color: white;
+          font-size: 30px;
+          margin: 20px;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
   }
 }
