@@ -1,7 +1,7 @@
 const weatherElement = document.getElementById('weather');
 
 const renderLoading = () => {
-  weatherElement.innerHTML = '<h1>loading...</h1>';
+  weatherElement.innerHTML = '<div class="loading">loading...</div>';
 };
 
 export default renderLoading;
