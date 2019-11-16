@@ -86,14 +86,87 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/components/empty.js":
+/*!*********************************!*\
+  !*** ./src/components/empty.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst renderEmpty = () => { document.getElementById('weather').innerHTML = ''; };\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (renderEmpty);\n\n//# sourceURL=webpack:///./src/components/empty.js?");
+
+/***/ }),
+
+/***/ "./src/components/loading.js":
+/*!***********************************!*\
+  !*** ./src/components/loading.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst weatherElement = document.getElementById('weather');\r\n\r\nconst renderLoading = () => {\r\n  weatherElement.innerHTML = '<h1>loading...</h1>';\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (renderLoading);\n\n//# sourceURL=webpack:///./src/components/loading.js?");
+
+/***/ }),
+
+/***/ "./src/components/notfound.js":
+/*!************************************!*\
+  !*** ./src/components/notfound.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst weatherElement = document.getElementById('weather');\r\n\r\nconst renderNotFound = (inputValue) => {\r\n  weatherElement.innerHTML = `<h1>there is no place called ${inputValue}</h1>`;\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (renderNotFound);\n\n//# sourceURL=webpack:///./src/components/notfound.js?");
+
+/***/ }),
+
+/***/ "./src/components/weather.js":
+/*!***********************************!*\
+  !*** ./src/components/weather.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst weatherElement = document.getElementById('weather');\r\nconst renderWeather = ({\r\n  weather, wind, main, name, error,\r\n}) => {\r\n  weatherElement.innerHTML = `\r\n    <h1>${name}</h1>\r\n    <h2> wind ${JSON.stringify(wind)}</h2>\r\n    <img src=\"http://openweathermap.org/img/wn/${weather && weather[0].icon}@2x.png\">\r\n    <p>weather ${JSON.stringify(weather)}</p>\r\n    <p>weather ${JSON.stringify(main)}</p>\r\n    <p>error ${JSON.stringify(error)}</p>\r\n  \r\n  `;\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (renderWeather);\n\n//# sourceURL=webpack:///./src/components/weather.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("const debounce = (func, delay) => {\r\n  let inDebounce;\r\n  // eslint-disable-next-line func-names\r\n  return function () {\r\n    const context = this;\r\n    // eslint-disable-next-line prefer-rest-params\r\n    const args = arguments;\r\n    clearTimeout(inDebounce);\r\n    inDebounce = setTimeout(() => func.apply(context, args), delay);\r\n  };\r\n};\r\n\r\n\r\nconst fetchWeather = async (city) => {\r\n  const {\r\n    weather, wind, main, name, cod, message,\r\n  } = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=0afb0e9dce5d994d7f33ebdcc4202375`)\r\n    .then((res) => res.json()\r\n      .then((data) => data)\r\n      .catch((error) => error))\r\n    .catch((error) => error);\r\n  return {\r\n    weather, wind, main, name, error: { cod, message },\r\n  };\r\n};\r\n\r\n\r\ndocument.getElementById('city-input').addEventListener('keyup', debounce(({ target }) => {\r\n  // eslint-disable-next-line no-console\r\n  fetchWeather(target.value).then((data) => {\r\n    document.getElementById('weather').innerText = JSON.stringify(data);\r\n  });\r\n}, 300));\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _service_weather__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./service/weather */ \"./src/service/weather.js\");\n/* harmony import */ var _components_weather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/weather */ \"./src/components/weather.js\");\n/* harmony import */ var _components_notfound__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/notfound */ \"./src/components/notfound.js\");\n/* harmony import */ var _components_loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/loading */ \"./src/components/loading.js\");\n/* harmony import */ var _shared_debounce__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shared/debounce */ \"./src/shared/debounce.js\");\n/* harmony import */ var _components_empty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/empty */ \"./src/components/empty.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst cityInputField = document.getElementById('city-input');\r\n\r\ncityInputField.addEventListener('keyup', Object(_shared_debounce__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(({ target }) => {\r\n  if (target.value.replace(/\\s/g, '').length) {\r\n    Object(_components_loading__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\r\n    Object(_service_weather__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(target.value).then((data) => {\r\n      if (data.name) {\r\n        Object(_components_weather__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(data);\r\n      } else {\r\n        Object(_components_notfound__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(target.value);\r\n      }\r\n    });\r\n  } else {\r\n    Object(_components_empty__WEBPACK_IMPORTED_MODULE_5__[\"default\"])();\r\n  }\r\n}, 300));\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/service/weather.js":
+/*!********************************!*\
+  !*** ./src/service/weather.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst fetchWeather = async (city) => {\r\n  const {\r\n    weather, wind, main, name, cod, message,\r\n  } = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=0afb0e9dce5d994d7f33ebdcc4202375`)\r\n    .then((res) => res.json()\r\n      .then((data) => data)\r\n      .catch((error) => error))\r\n    .catch((error) => error);\r\n  return {\r\n    weather, wind, main, name, error: { cod, message },\r\n  };\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (fetchWeather);\n\n//# sourceURL=webpack:///./src/service/weather.js?");
+
+/***/ }),
+
+/***/ "./src/shared/debounce.js":
+/*!********************************!*\
+  !*** ./src/shared/debounce.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst debounce = (func, delay) => {\r\n  let inDebounce;\r\n  // eslint-disable-next-line func-names\r\n  return function () {\r\n    const context = this;\r\n    // eslint-disable-next-line prefer-rest-params\r\n    const args = arguments;\r\n    clearTimeout(inDebounce);\r\n    inDebounce = setTimeout(() => func.apply(context, args), delay);\r\n  };\r\n};\r\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (debounce);\n\n//# sourceURL=webpack:///./src/shared/debounce.js?");
 
 /***/ })
 
