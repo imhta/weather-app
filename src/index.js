@@ -4,7 +4,7 @@ import renderNotFound from './components/notfound';
 import renderLoading from './components/loading';
 import debounce from './shared/debounce';
 import renderEmpty from './components/empty';
-
+import './scss/main.scss';
 
 const cityInputField = document.getElementById('city-input');
 
