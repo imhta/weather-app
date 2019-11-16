@@ -1,7 +1,10 @@
 const weatherElement = document.getElementById('weather');
 
-const renderNotFound = (inputValue) => {
-  weatherElement.innerHTML = `<h1 class="not-found">there is no place called ${inputValue}</h1>`;
+const renderNotFound = (inputValue, {cod, message}) => {
+  weatherElement.innerHTML = `
+    <h1>${cod} - ${message}</h1>
+    <p class="not-found">there is no city called ${inputValue}</p>
+  `;
 };
 
 export default renderNotFound;

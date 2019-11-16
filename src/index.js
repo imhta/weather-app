@@ -12,10 +12,10 @@ cityInputField.addEventListener('keyup', debounce(({ target }) => {
   if (target.value.replace(/\s/g, '').length) {
     renderLoading();
     fetchWeather(target.value).then((data) => {
-      if (data.name) {
+      if (data.error.cod === 200) {
         renderWeather(data);
       } else {
-        renderNotFound(target.value);
+        renderNotFound(target.value, data.error);
       }
     });
   } else {

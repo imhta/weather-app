@@ -7,7 +7,7 @@ const fetchWeather = async (city) => {
       .catch((error) => error))
     .catch((error) => error);
   return {
-    weather, wind, main, name, error: { cod, message }, country: sys.country,
+    weather, wind, main, name, error: { cod, message }, country: sys && sys.country,
   };
 };
 
