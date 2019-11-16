@@ -153,7 +153,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nconst weatherElement = docume
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst weatherElement = document.getElementById('weather');\r\n\r\nconst renderNotFound = (inputValue, {cod, message}) => {\r\n  weatherElement.innerHTML = `\r\n    <h1>${cod} - ${message}</h1>\r\n    <p class=\"not-found\">there is no city called ${inputValue}</p>\r\n  `;\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (renderNotFound);\n\n//# sourceURL=webpack:///./src/components/notfound.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst weatherElement = document.getElementById('weather');\r\n\r\nconst renderNotFound = (inputValue, { cod, message }) => {\r\n  weatherElement.innerHTML = `\r\n    <h1>${cod} - ${message}</h1>\r\n    <p class=\"not-found\">there is no city called ${inputValue}</p>\r\n  `;\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (renderNotFound);\n\n//# sourceURL=webpack:///./src/components/notfound.js?");
 
 /***/ }),
 
