@@ -1,33 +1,24 @@
-const debounce = (func, delay) => {
-  let inDebounce;
-  // eslint-disable-next-line func-names
-  return function () {
-    const context = this;
-    // eslint-disable-next-line prefer-rest-params
-    const args = arguments;
-    clearTimeout(inDebounce);
-    inDebounce = setTimeout(() => func.apply(context, args), delay);
-  };
-};
+import fetchWeather from './service/weather';
+import renderWeather from './components/weather';
+import renderNotFound from './components/notfound';
+import renderLoading from './components/loading';
+import debounce from './shared/debounce';
+import renderEmpty from './components/empty';
 
 
-const fetchWeather = async (city) => {
-  const {
-    weather, wind, main, name, cod, message,
-  } = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=0afb0e9dce5d994d7f33ebdcc4202375`)
-    .then((res) => res.json()
-      .then((data) => data)
-      .catch((error) => error))
-    .catch((error) => error);
-  return {
-    weather, wind, main, name, error: { cod, message },
-  };
-};
+const cityInputField = document.getElementById('city-input');
 
-
-document.getElementById('city-input').addEventListener('keyup', debounce(({ target }) => {
-  // eslint-disable-next-line no-console
-  fetchWeather(target.value).then((data) => {
-    document.getElementById('weather').innerText = JSON.stringify(data);
-  });
+cityInputField.addEventListener('keyup', debounce(({ target }) => {
+  if (target.value.replace(/\s/g, '').length) {
+    renderLoading();
+    fetchWeather(target.value).then((data) => {
+      if (data.name) {
+        renderWeather(data);
+      } else {
+        renderNotFound(target.value);
+      }
+    });
+  } else {
+    renderEmpty();
+  }
 }, 300));
