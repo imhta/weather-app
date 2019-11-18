@@ -4,22 +4,42 @@ body {
   main {
     display: flex;
     flex-wrap: wrap;
+    #input-wrapper {
+      position: relative;
+      input {
+        flex-grow: 1;
+        padding: 20px 30px;
+        margin: 10px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 24px;
+        border: none;
+        background-color: gray;
+        color: white;
+        border-radius: 4px;
 
-    input {
-      flex-grow: 1;
-      padding: 20px 30px;
-      margin: 10px;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 24px;
-      border: none;
-      background-color: gray;
-      color: white;
-      border-radius: 4px;
-
-      &::placeholder {
-        color: rgb(168, 168, 168);
+        &::placeholder {
+          color: rgb(168, 168, 168);
+        }
+      }
+      #toggle {
+        display: flex;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 24px;
+        margin: 15px 10px;
+        span {
+          padding: 5px 10px;
+          width: 50%;
+          border-radius: 10px;
+        }
+        .is-selected {
+          background-color: blueviolet;
+          color: white;
+        }
       }
     }
+
     .title {
       font-size: 30px;
       text-align: center;
