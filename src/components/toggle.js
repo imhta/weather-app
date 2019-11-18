@@ -1,8 +1,16 @@
 /* eslint-disable func-names */
-const toggleWeatherUnit = function () {
-  this.currentState = this.currentState === 'celsius' ? 'fahrenheit' : 'celsius';
-  document.getElementById(this.currentState).classList.push('is-selected');
-  return this.currentState;
+const fElement = document.getElementById('F');
+const cElement = document.getElementById('C');
+const reset = (currentUnit) => {
+  if (currentUnit === 'C') {
+    fElement.className = '';
+  } else {
+    cElement.className = '';
+  }
+};
+const toggleWeatherUnit = function (currentUnit) {
+  reset(currentUnit);
+  document.getElementById(currentUnit).className = 'is-selected';
 };
 
 export default toggleWeatherUnit;
