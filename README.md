@@ -1,4 +1,4 @@
-# 🌞 Weather app 
+# 🌞 Weather check 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://twitter.com/ponmuthuselvam" target="_blank">
@@ -24,7 +24,7 @@ npm start
 
 ## Author
 
-👤 **Imhta**
+**Imhta**
 
 - Twitter: [@Pon Muthu Selvam](https://twitter.com/ponmuthuselvam)
 - Github: [@imhta](https://github.com/imhta)

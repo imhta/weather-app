@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Restaurant template</title>
+    <title>🌞 Weather check</title>
 </head>
 <body>
-    <div id="content"></div>
+    <main>
+        <section>
+            <h1 class="title">🌞 Weather Check</h1>
+            <div id="input-wrapper">
+                <input id="city-input" type="text" placeholder="City">
+                <div id="toggle">
+                    <span id="C">C</span>
+                    <span id="F">F</span>
+                </div>
+            </div>
+            <p class="note">built with ❤️ <br>
+                <a href="https://github.com/imhta/weather-app"> Project</a> 
+                by <a href="https://github.com/imhta">@imhta</a>
+            </p> 
+        </section>
+        <section id="content">
+            <div id="weather"></div> 
+        </section>
+    </main>
+
     <script src="main.js"></script>
 </body>
 </html>
